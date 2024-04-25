@@ -15,7 +15,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 @Component
 public class JwtHelper {
 	public static final long JWT_TOKEN_VALIDIY = 5 * 60 * 60;
-	private String secret = "hqsfxsahaksyxoidyfvdaiocc";
+	private String secret = "TFCwfbXerLCVoS2TjN67rw==";
 
 	// retrive username from jwt token
 
