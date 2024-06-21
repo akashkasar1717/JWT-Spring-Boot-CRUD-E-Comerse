@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
+//import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.ecom.Exception.ResourceNotFoundException;
@@ -21,13 +21,13 @@ public class UserService {
 	private UserRepository userRepositroy;
 	@Autowired
 	RoleRepository roleRepository;
-	@Autowired
-	private PasswordEncoder passwordEncoder;
+//	@Autowired
+//	private PasswordEncoder passwordEncoder;
 
 	public UserDto create(UserDto userDto) {
 		User user = this.toEntity(userDto);
-		String passEncode = this.passwordEncoder.encode(user.getPassword());
-		user.setPassword(passEncode);
+//		String passEncode = this.passwordEncoder.encode(user.getPassword());
+//		user.setPassword(passEncode);
 		User userCreate = this.userRepositroy.save(user);
 		return this.toDto(userCreate);
 	}

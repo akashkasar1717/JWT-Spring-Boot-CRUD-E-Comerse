@@ -4,28 +4,18 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-
-import com.ecom.Model.OrderItem;
-import com.ecom.Model.User;
-
 public class OrderDto {
-	
+
 	private int orderId;
 	private String orderStatus;
 	private String paymentStatus;
 	private Date orderDelivered;
 	private double orderAmt;
 	private String billingAddress;
-	
+
 	private UserDto user;
-	
-	private Set<OrderItemDto> orderItem=new HashSet<>();
+
+	private Set<OrderItemDto> orderItem = new HashSet<>();
 
 	public int getOrderId() {
 		return orderId;
@@ -90,7 +80,5 @@ public class OrderDto {
 	public void setOrderItem(Set<OrderItemDto> orderItem) {
 		this.orderItem = orderItem;
 	}
-	
-	
-	
+
 }

@@ -30,9 +30,9 @@ public class ProductController {
 	private ProductService productService;
 	private List<Product> findProductByCategoty;
 
-	@PostMapping("/create/{catid}")
-	public ResponseEntity<ProductDto> createProduct(@RequestBody ProductDto product, @PathVariable int catid) {
-		ProductDto createProduct = productService.createProduct(product, catid);
+	@PostMapping("/create")
+	public ResponseEntity<ProductDto> createProduct(@RequestBody ProductDto product) {
+		ProductDto createProduct = productService.createProduct(product);
 		return new ResponseEntity<ProductDto>(createProduct, HttpStatus.CREATED);
 	}
 

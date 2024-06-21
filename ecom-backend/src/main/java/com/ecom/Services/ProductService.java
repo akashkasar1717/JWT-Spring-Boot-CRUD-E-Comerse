@@ -29,22 +29,10 @@ public class ProductService {
 	@Autowired
 	private ModelMapper mapper;
 
-	public ProductDto createProduct(ProductDto productDto, int catid) {
-
-		// Fetch Catgory where we want to add Product
-		Category cat = this.catRepo.findById(catid)
-				.orElseThrow(() -> new ResourceNotFoundException("This Category id not found Catgory"));
-
-		// ProductDto to Product
+	public ProductDto createProduct(ProductDto productDto) {
 		System.out.println(productDto.getProductName());
 		Product product = toEntity(productDto);
-		// System.out.println("ProductDto to Product"+product.getProductName());
-		product.setCategory(cat);
-
-		// Save Product into Database
 		Product save = this.productRepo.save(product);
-
-		// Change Product to ProductDto
 		ProductDto dto = toDto(save);
 		return dto;
 	}
@@ -71,11 +59,6 @@ public class ProductService {
 		response.setPageSize(page.getSize());
 		response.setTotalPages(page.getTotalPages());
 		response.setLastPage(page.isLast());
-		// ProductDto to Product
-		// List<Product> findAll = productRepo.findAll();
-		// Product to ProductDto
-		// List<ProductDto> findAllDto = findAll.stream().map(product
-		// ->this.toDto(product)).collect(Collectors.toList());
 		return response;
 	}
 
@@ -113,13 +96,10 @@ public class ProductService {
 	public ProductResponse findProductByCategoty(int catId, int pageSize, int pageNumber, String sortDir) {
 		Category Cat = this.catRepo.findById(catId)
 				.orElseThrow(() -> new ResourceNotFoundException("this id Category not Found"));
-		// List<Product> findByCategory = this.productRepo.findByCategory(Cat);
 		Pageable pageable = PageRequest.of(pageNumber, pageSize);
 		Page<Product> page = this.productRepo.findByCategory(Cat, pageable);
 		List<Product> product = page.getContent();
 		List<ProductDto> productDto = product.stream().map(p -> toDto(p)).collect(Collectors.toList());
-		// List<ProductDto> collect = findByCategory.stream().map(product
-		// ->toDto(product)).collect(Collectors.toList());
 
 		ProductResponse response = new ProductResponse();
 		response.setContent(productDto);
@@ -133,7 +113,7 @@ public class ProductService {
 
 	// ProductDto to Product
 	public Product toEntity(ProductDto pDto) {
-		// Product p=new Product();
+//		Product p=new Product();
 //		p.setProductId(pDto.getProductId());
 //		p.setProductName(pDto.getProductName());
 //		p.setProductDesc(pDto.getProductDesc());
@@ -160,7 +140,6 @@ public class ProductService {
 		catDto.setCategoryId(product.getCategory().getCategoryId());
 		catDto.setTitle(product.getCategory().getTitle());
 
-		// Then Set Category Dto in Product Dto
 		pDto.setCategory(catDto);
 		return pDto;
 	}

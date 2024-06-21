@@ -1,21 +1,11 @@
 package com.ecom.payload;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-
-import com.ecom.Model.Order;
-import com.ecom.Model.Product;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class OrderItemDto {
 
 	private int orderItemId;
-	
 	private ProductDto product;
-	
 	private double totalProductprice;
 	@JsonIgnore
 	private OrderDto order;
@@ -51,7 +41,5 @@ public class OrderItemDto {
 	public void setOrder(OrderDto order) {
 		this.order = order;
 	}
-	
-	
-	
+
 }

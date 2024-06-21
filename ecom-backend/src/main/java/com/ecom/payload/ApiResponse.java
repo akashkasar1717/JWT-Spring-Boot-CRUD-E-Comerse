@@ -11,7 +11,6 @@ public class ApiResponse {
 	}
 	public ApiResponse() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	public String getMessage() {
 		return message;
@@ -25,9 +24,5 @@ public class ApiResponse {
 	public void setSuccess(boolean success) {
 		this.success = success;
 	}
-	
-	
-	
-	
 	
 }

@@ -23,7 +23,7 @@ public class CategoryController {
 
 	@Autowired
 	private CategoryService catService;
-	private CategoryDto create;
+//	private CategoryDto create;
 
 	@PostMapping("/create")
 	public ResponseEntity<CategoryDto> create(@RequestBody CategoryDto catDto) {

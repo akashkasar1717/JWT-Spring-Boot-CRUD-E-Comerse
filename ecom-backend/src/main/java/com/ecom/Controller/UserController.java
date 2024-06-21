@@ -7,7 +7,6 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,11 +19,9 @@ import com.ecom.payload.UserDto;
 @RequestMapping("/users")
 
 public class UserController {
-
-	@Autowired
-	private PasswordEncoder passwordEncoder;
-	@Autowired
-	private ModelMapper mapper;
+//
+//	@Autowired
+//	private ModelMapper mapper;
 	@Autowired
 	private UserService userServie;
 
@@ -35,7 +32,6 @@ public class UserController {
 		formatter.format(date);
 		userDto.setDate(date);
 		userDto.setActive(true);
-
 		UserDto ud = this.userServie.create(userDto);
 		return new ResponseEntity<UserDto>(ud, HttpStatus.CREATED);
 	}

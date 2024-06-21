@@ -1,40 +1,19 @@
 package com.ecom.payload;
 
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
-
-import javax.persistence.Column;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-
-import com.ecom.Model.Role;
 
 public class UserDto {
-	
+
 	private int userId;
-	
-	
 	private String name;
-	
-	
 	private String email;
-	
 	private String password;
-	
 	private String address;
-	
 	private String about;
 	private String gender;
 	private String phone;
-	
-    private Date   date;
-    private boolean  active;
-   
-
+	private Date date;
+	private boolean active;
 
 	public int getUserId() {
 		return userId;
@@ -116,7 +95,4 @@ public class UserDto {
 		this.active = active;
 	}
 
-	
-	
-	
 }
