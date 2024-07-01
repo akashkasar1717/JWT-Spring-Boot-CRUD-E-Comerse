@@ -27,14 +27,14 @@ public class CategoryController {
 
 	@PostMapping("/create")
 	public ResponseEntity<CategoryDto> create(@RequestBody CategoryDto catDto) {
-		CategoryDto create = this.catService.create(catDto);
+		CategoryDto create = catService.create(catDto);
 		return new ResponseEntity<CategoryDto>(create, HttpStatus.CREATED);
 	}
 
 	@PostMapping("/update/{catid}")
 	public ResponseEntity<CategoryDto> update(@RequestBody CategoryDto catDto, @PathVariable int catid) {
 		System.out.println(catid);
-		CategoryDto update = this.catService.update(catDto, catid);
+		CategoryDto update = catService.update(catDto, catid);
 		return new ResponseEntity<CategoryDto>(update, HttpStatus.OK);
 	}
 
@@ -44,16 +44,19 @@ public class CategoryController {
 		return new ResponseEntity<ApiResponse>(new ApiResponse("Category Delete Successfully", true), HttpStatus.OK);
 	}
 
-	@GetMapping("getByid/{catId}")
+	@GetMapping("/getByid/{catId}")
 	public ResponseEntity<CategoryDto> getByid(@PathVariable int catId) {
-		CategoryDto getbyId = this.catService.getbyId(catId);
+		CategoryDto getbyId = catService.getbyId(catId);
 		return new ResponseEntity<CategoryDto>(getbyId, HttpStatus.OK);
 	}
 
-	@GetMapping("getAll")
+	@GetMapping("/getAll")
 	public ResponseEntity<List<CategoryDto>> getAll() {
-		List<CategoryDto> all = this.catService.getAll();
-		return new ResponseEntity<List<CategoryDto>>(all, HttpStatus.OK);
+		List<CategoryDto> all = catService.getAll();
+		if(all.size()>0)			
+			return new ResponseEntity<List<CategoryDto>>(all, HttpStatus.OK);
+		else
+			return new ResponseEntity<List<CategoryDto>>(all, HttpStatus.NO_CONTENT);
 	}
 
 }

@@ -39,7 +39,6 @@ public class CartController {
 
 	@GetMapping("/{cartId}")
 	public ResponseEntity<CartDto> getCartById(@PathVariable int cartId) {
-		System.out.println(cartId);
 		CartDto cartByID = this.cartSer.getCartByID(cartId);
 		return new ResponseEntity<CartDto>(cartByID, HttpStatus.OK);
 	}
